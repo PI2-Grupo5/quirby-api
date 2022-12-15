@@ -1,0 +1,25 @@
+{
+  "name": "quirby-api",
+  "version": "1.0.0",
+  "description": "Back-end of Quirby the clean robot from a UNB-PI2 project. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PI2-Grupo5/quirby-api.git"
+  },
+  "keywords": [
+    "cleanRobot",
+    "UNB",
+    "PI2",
+    "API"
+  ],
+  "author": "@marcos-mv",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PI2-Grupo5/quirby-api/issues"
+  },
+  "homepage": "https://github.com/PI2-Grupo5/quirby-api#readme"
+}
