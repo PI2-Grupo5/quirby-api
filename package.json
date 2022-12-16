@@ -1,25 +1,37 @@
 {
-  "name": "quirby-api",
-  "version": "1.0.0",
-  "description": "Back-end of Quirby the clean robot from a UNB-PI2 project. ",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/PI2-Grupo5/quirby-api.git"
-  },
-  "keywords": [
-    "cleanRobot",
-    "UNB",
-    "PI2",
-    "API"
-  ],
-  "author": "@marcos-mv",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/PI2-Grupo5/quirby-api/issues"
-  },
-  "homepage": "https://github.com/PI2-Grupo5/quirby-api#readme"
+    "name": "quirby-api",
+    "version": "1.0.0",
+    "description": "Back-end of Quirby the clean robot from a UNB-PI2 project. ",
+    "scripts": {
+        "start": "node ./bin/www",
+        "test": "jest",
+        "migrate": "node ./bin/migrate.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/PI2-Grupo5/quirby-api.git"
+    },
+    "keywords": [
+        "cleanRobot",
+        "UNB",
+        "PI2",
+        "API"
+    ],
+    "author": "@marcos-mv",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/PI2-Grupo5/quirby-api/issues"
+    },
+    "homepage": "https://github.com/PI2-Grupo5/quirby-api#readme",
+    "dependencies": {
+        "cookie-parser": "~1.4.4",
+        "debug": "~2.6.9",
+        "express": "^4.18.2",
+        "morgan": "~1.9.1",
+        "pg": "^8.8.0",
+        "sequelize": "^6.27.0"
+    },
+    "devDependencies": {
+        "jest": "^29.3.1"
+    }
 }
