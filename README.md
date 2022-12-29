@@ -6,13 +6,20 @@ e docker-compose na versão 2.14.2 .
 
 depois de baixar o repositório basta entrar na pasta da aplicação e executar o comando: 
 
-``` $ docker-compose up quirby-api```
+``` 
+$ docker-compose up quirby-api
+```
 
 A aplicação deve estar rodando no http://localhost:3000
 
 para testar se tudo está funcionando devidamente execute esse comando no terminal:
 
-```$ curl -w "\n" \ -X PUT \ -d "firstName=Marcos&lastName=Gabriel" \ localhost:3000/persons```
+```
+curl -w "\n" \
+       -X PUT \
+       -d "firstName=Bobbie&lastName=Draper" \
+       localhost:3000/persons
+```
 
 Ele ira salvar uma pessoa no database da aplicação.
 
@@ -20,8 +27,12 @@ Para verificar se essa pessoa existe você pode acessar esse endereço http://lo
 
 ou esse comando no terminal:
 
-``` $ curl -w "\n" localhost:3000/persons/all```
+``` 
+$ curl -w "\n" localhost:3000/persons/all
+```
 
 Para rodar os testes das aplicação basta rodar o comando abaixo.
 
-```$ npm run test```
+```
+$ npm run test
+```

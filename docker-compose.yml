@@ -7,12 +7,14 @@ services:
       POSTGRES_PASSWORD: postgres
     ports: 
       - '5432:5432'
+    container_name: database
     volumes:
       - quirby-api-db:/var/lib/postgresql/data
 
   quirby-api:
     build:
       context: .
+    container_name: quirby
     environment:
       DB_SCHEMA: postgres
       DB_USER: postgres
