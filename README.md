@@ -15,7 +15,7 @@ A aplicação deve estar rodando no http://localhost:3000
 para testar se tudo está funcionando devidamente execute esse comando no terminal:
 
 ```
-curl -w "\n" \
+$ curl -w "\n" \
        -X PUT \
        -d "firstName=Bobbie&lastName=Draper" \
        localhost:3000/persons
