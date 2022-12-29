@@ -16,19 +16,19 @@
 FROM node:18.12.1
 
 # RUN: executes commands inside the container.
-RUN mkdir -p /opt/quirby_api
+RUN mkdir -p /opt/app
 
 # WORKDIR: changes the active directory.
-WORKDIR /opt/quirby_api
+WORKDIR /opt/app
 
-RUN adduser -S quirby_api
-COPY quirby_api/ .
+RUN adduser --system app
+COPY . .
 RUN npm install
 RUN npm install --save pm2
-RUN chown -R quirby-api /opt/quirby_api
+RUN chown -R app /opt/app
 
 # USER: changes the active user for the rest of the commands.
-USER quirby_api
+USER app
 
 # EXPOSE: tells Docker which ports should be mapped outside the container.
 EXPOSE 3000
