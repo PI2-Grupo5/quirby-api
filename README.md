@@ -31,7 +31,13 @@ ou esse comando no terminal:
 $ curl -w "\n" localhost:3000/persons/all
 ```
 
-Para rodar os testes das aplicação basta rodar o comando abaixo.
+Para rodar os testes das aplicação basta entrar dentro do container com o seguinte comando: 
+
+```
+$ docker exec -it quirby /bin/sh 
+```
+
+e executar com teste com o comando abaixo:
 
 ```
 $ npm run test
