@@ -1,10 +1,10 @@
 // Robots.js
 
 var express = require('express');
-var router = express.Router();
+var robotRouter = express.Router();
 var db = require('../database/database');
 
-router.get("/robot/all", function(req, res) {
+robotRouter.get("/robot/all", function(req, res) {
     db.Robot.findAll()
         .then(Robots => {
             res.status(200).send(JSON.stringify(Robots));
@@ -14,7 +14,7 @@ router.get("/robot/all", function(req, res) {
         });
 });
 
-router.get("/robot/:id", function(req, res) {
+robotRouter.get("/robot/:idRobot", function(req, res) {
     db.Robot.findByPk(req.params.idRobot)
         .then(Robot => {
             res.status(200).send(JSON.stringify(Robot));
@@ -24,7 +24,7 @@ router.get("/robot/:id", function(req, res) {
         });
 });
 
-router.put("/robot", function(req, res) {
+robotRouter.put("/robot", function(req, res) {
     db.Robot.create({
             idRobot: req.body.idRobot,
             nameRobot: req.body.nameRobot,
@@ -42,7 +42,7 @@ router.put("/robot", function(req, res) {
         });
 });
 
-router.delete("/robot/:id", function(req, res) {
+robotRouter.delete("/robot/:idRobot", function(req, res) {
     db.Robot.destroy({
             where: {
                 idRobot: req.params.idRobot
@@ -56,4 +56,4 @@ router.delete("/robot/:id", function(req, res) {
         });
 });
 
-module.exports = router;
+module.exports = robotRouter;
