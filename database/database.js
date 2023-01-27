@@ -70,11 +70,12 @@ const Robot = sequelize.define('Robot', {
         type: Sequelize.INTEGER,
         allowNull: true,
         default: null
+    },
+    cleaningSchedule: {
+        type: Sequelize.ARRAY(Sequelize.TIME),
+        allowNull: true,
+        default: null
     }
-    // cleaningSchedule: {
-
-    // },
-
 });
 
 
