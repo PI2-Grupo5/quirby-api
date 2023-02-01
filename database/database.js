@@ -72,7 +72,7 @@ const Robot = sequelize.define('Robot', {
         default: null
     },
     cleaningSchedule: {
-        type: Sequelize.ARRAY(Sequelize.TIME),
+        type: Sequelize.ARRAY(Sequelize.DATE),
         allowNull: true,
         default: null
     }
