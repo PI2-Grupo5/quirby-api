@@ -14,6 +14,7 @@ let app = express();
 let urlOrigin = '';
 
 console.log(process.env.NODE_ENV);
+console.log(process.env.DATABASE_URL);
 
 if (process.env.NODE_ENV == "development") {
     urlOrigin = 'http://localhost:8080'
