@@ -1,18 +1,21 @@
-// database.js
+const database = require('../config/dbconfig.js');
 
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize(process.env.DB_URL,
-    process.env.DB_SCHEMA || 'postgres',
-    process.env.DB_USER || 'postgres',
-    process.env.DB_PASSWORD || 'postgres', {
-        host: process.env.DB_HOST || 'localhost',
-        port: process.env.DB_PORT || 5432,
-        dialect: 'postgres',
+
+let sequelize;
+
+if (process.env.NODE_ENV == "development") {
+    sequelize = new Sequelize(database);
+} else {
+    sequelize = new Sequelize(process.env.DATABASE_URL, {
         dialectOptions: {
-            ssl: process.env.DB_SSL == "true"
+            ssl: {
+                require: true,
+                rejectUnauthorized: false
+            }
         }
     });
-
+}
 
 const Person = sequelize.define('Person', {
 
@@ -34,8 +37,7 @@ const Person = sequelize.define('Person', {
         type: Sequelize.STRING,
         allowNull: true
     }
-
-});
+}, { schema: "quirby", timestamps: false });
 
 const Robot = sequelize.define('Robot', {
     idRobot: {
@@ -79,11 +81,9 @@ const Robot = sequelize.define('Robot', {
         allowNull: true,
         default: null
     }
-});
-
+}, { schema: "quirby", timestamps: false });
 
 module.exports = {
-    sequelize: sequelize,
     Person: Person,
     Robot: Robot
 };

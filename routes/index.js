@@ -1,11 +1,11 @@
 var express = require('express');
 
-var router = express.Router();
+var routes = express.Router();
 
-const robotRouter = require('./persons');
-const personRouter = require('./robot');
+const robotRouter = require('./persons.js');
+const personRouter = require('./robot.js');
 
-router.use('/', personRouter);
-router.use('/', robotRouter);
+routes.use('/', personRouter);
+routes.use('/', robotRouter);
 
-module.exports = router;
+module.exports = routes;

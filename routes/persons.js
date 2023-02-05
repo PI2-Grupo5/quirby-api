@@ -2,7 +2,7 @@
 
 var express = require('express');
 var personRouter = express.Router();
-var db = require('../database/database');
+var db = require('../models/tables');
 
 personRouter.get("/person/all", function(req, res) {
     db.Person.findAll()
