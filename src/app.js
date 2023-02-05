@@ -15,6 +15,7 @@ let urlOrigin = '';
 
 console.log(process.env.NODE_ENV);
 console.log(process.env.DATABASE_URL);
+console.log(process.env.PGPORT);
 
 if (process.env.NODE_ENV == "development") {
     urlOrigin = 'http://localhost:8080'
