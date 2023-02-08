@@ -85,5 +85,6 @@ const Robot = sequelize.define('Robot', {
 
 module.exports = {
     Person: Person,
-    Robot: Robot
+    Robot: Robot,
+    sequelize: sequelize
 };
