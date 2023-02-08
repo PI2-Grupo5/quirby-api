@@ -26,7 +26,6 @@ personRouter.get("/person/:idPerson", function(req, res) {
 
 personRouter.put("/person", function(req, res) {
     db.Person.create({
-            idPerson: req.body.idPerson,
             namePerson: req.body.namePerson,
             email: req.body.email,
             password: req.body.password
