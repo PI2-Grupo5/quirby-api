@@ -1,39 +1,31 @@
 {
     "name": "quirby-api",
     "version": "1.0.0",
-    "description": "Back-end of Quirby the clean robot from a UNB-PI2 project. ",
+    "description": "api quirby",
+    "main": "index.js",
     "scripts": {
-        "pm2": "pm2 start processes.json --no-daemon",
-        "start": "node ./bin/www",
-        "test": "jest",
-        "migrate": "node ./bin/migrate.js"
+        "start": "node src/server.js",
+        "dev": "nodemon -L --watch . src/server.js",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "migrate": "node ./database/migrate.js"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/PI2-Grupo5/quirby-api.git"
+        "url": "git+https://github.com/marcos-mv/api-teste.git"
     },
-    "keywords": [
-        "cleanRobot",
-        "UNB",
-        "PI2",
-        "API"
-    ],
-    "author": "@marcos-mv",
-    "license": "MIT",
+    "author": "",
+    "license": "ISC",
     "bugs": {
-        "url": "https://github.com/PI2-Grupo5/quirby-api/issues"
+        "url": "https://github.com/marcos-mv/api-teste/issues"
     },
-    "homepage": "https://github.com/PI2-Grupo5/quirby-api#readme",
+    "homepage": "https://github.com/marcos-mv/api-teste#readme",
     "dependencies": {
-        "cookie-parser": "~1.4.4",
-        "debug": "~2.6.9",
         "express": "^4.18.2",
-        "morgan": "~1.9.1",
-        "pg": "^8.8.0",
-        "pm2": "^5.2.2",
-        "sequelize": "^6.27.0"
-    },
-    "devDependencies": {
-        "jest": "^29.3.1"
+        "nodemon": "^2.0.20",
+        "sequelize": "^6.28.0",
+        "dotenv": "^16.0.1",
+        "helmet": "^5.1.1",
+        "cors": "^2.8.5",
+        "pg": "^8.8.0"
     }
 }

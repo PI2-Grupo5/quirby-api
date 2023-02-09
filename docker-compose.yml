@@ -1,29 +1,42 @@
-version: "3.9"
+version: '3.9'
+
 services:
+
   postgres:
     image: postgres
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-    ports: 
-      - '5432:5432'
+      POSTGRES_USER: "developer"
+      POSTGRES_PASSWORD: "developer"
+      POSTGRES_DB: "developer"
     container_name: database
-    volumes:
-      - quirby-api-db:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      backend:
+        ipv4_address: 172.25.0.2
 
   quirby-api:
     build:
       context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/api-teste
+      - /api-teste/node_modules
     container_name: quirby
-    environment:
-      DB_SCHEMA: postgres
-      DB_USER: postgres
-      DB_PASSWORD: postgres
-      DB_HOST: postgres
-    depends_on:
+    links:
       - postgres
     ports:
-      - '3000:3000'
-        
-volumes:
-  quirby-api-db:
+      - "8080:8080"
+    environment:
+      - NODE_ENV=development
+    networks:
+      backend:
+        ipv4_address: 172.25.0.3
+
+networks:
+  backend:
+    driver: "bridge"
+    ipam:
+      config:
+        - subnet: 172.25.0.0/16
+          gateway: 172.25.0.1

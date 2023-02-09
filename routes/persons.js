@@ -1,10 +1,10 @@
 // persons.js
 
 var express = require('express');
-var router = express.Router();
-var db = require('../database/database');
+var personRouter = express.Router();
+var db = require('../models/tables');
 
-router.get("/all", function(req, res) {
+personRouter.get("/person/all", function(req, res) {
     db.Person.findAll()
         .then(persons => {
             res.status(200).send(JSON.stringify(persons));
@@ -14,8 +14,8 @@ router.get("/all", function(req, res) {
         });
 });
 
-router.get("/:id", function(req, res) {
-    db.Person.findByPk(req.params.id)
+personRouter.get("/person/:idPerson", function(req, res) {
+    db.Person.findByPk(req.params.idPerson)
         .then(person => {
             res.status(200).send(JSON.stringify(person));
         })
@@ -24,11 +24,11 @@ router.get("/:id", function(req, res) {
         });
 });
 
-router.put("/", function(req, res) {
+personRouter.put("/person", function(req, res) {
     db.Person.create({
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            id: req.body.id
+            namePerson: req.body.namePerson,
+            email: req.body.email,
+            password: req.body.password
         })
         .then(person => {
             res.status(200).send(JSON.stringify(person));
@@ -38,10 +38,10 @@ router.put("/", function(req, res) {
         });
 });
 
-router.delete("/:id", function(req, res) {
+personRouter.delete("/person/:idPerson", function(req, res) {
     db.Person.destroy({
             where: {
-                id: req.params.id
+                idPerson: req.params.idPerson
             }
         })
         .then(() => {
@@ -52,4 +52,4 @@ router.delete("/:id", function(req, res) {
         });
 });
 
-module.exports = router;
+module.exports = personRouter;
