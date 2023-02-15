@@ -44,45 +44,62 @@ robotRouter.put("/robot", function(req, res) {
 
 robotRouter.put("/robot/:idRobot", function(req, res) {
     db.Robot.findByPk(req.params.idRobot).then(
-        Robot =>{
-            if(Robot != null){
+        Robot => {
+            if (Robot != null) {
                 Robot.update({
-                    nameRobot: req.body.nameRobot,
-                    functionMode: req.body.functionMode,
-                    batteryStatus: req.body.batteryStatus,
-                    blockedAlert: req.body.blockedAlert,
-                    powerState: req.body.powerState,
-                    controlAccess: req.body.controlAccess,
-                    cleaningSchedule: req.body.cleaningSchedule
-                })
-                .then(Robot => {
-                    res.status(200).send(JSON.stringify(Robot));
-                })
-                .catch(err => {
-                    res.status(500).send(JSON.stringify(err));
-                })
-            }
-            else{
+                        nameRobot: req.body.nameRobot,
+                        functionMode: req.body.functionMode,
+                        batteryStatus: req.body.batteryStatus,
+                        blockedAlert: req.body.blockedAlert,
+                        powerState: req.body.powerState,
+                        controlAccess: req.body.controlAccess,
+                        cleaningSchedule: req.body.cleaningSchedule
+                    })
+                    .then(Robot => {
+                        res.status(200).send(JSON.stringify(Robot));
+                    })
+                    .catch(err => {
+                        res.status(500).send(JSON.stringify(err));
+                    })
+            } else {
                 db.Robot.create({
-                    idRobot: req.params.idRobot,
-                    nameRobot: req.body.nameRobot,
-                    functionMode: req.body.functionMode,
-                    batteryStatus: req.body.batteryStatus,
-                    blockedAlert: req.body.blockedAlert,
-                    powerState: req.body.powerState,
-                    controlAccess: req.body.controlAccess,
-                    cleaningSchedule: req.body.cleaningSchedule
-                })
-                .then(Robot => {
-                    res.status(200).send(JSON.stringify(Robot));
-                })
-                .catch(err => {
-                    res.status(500).send(JSON.stringify(err));
-                });
+                        idRobot: req.params.idRobot,
+                        nameRobot: req.body.nameRobot,
+                        functionMode: req.body.functionMode,
+                        batteryStatus: req.body.batteryStatus,
+                        blockedAlert: req.body.blockedAlert,
+                        powerState: req.body.powerState,
+                        controlAccess: req.body.controlAccess,
+                        cleaningSchedule: req.body.cleaningSchedule
+                    })
+                    .then(Robot => {
+                        res.status(200).send(JSON.stringify(Robot));
+                    })
+                    .catch(err => {
+                        res.status(500).send(JSON.stringify(err));
+                    });
             }
         }
     );
 });
+
+
+robotRouter.patch("/robot/:idRobot", function(req, res) {
+    db.Robot.findByPk(req.params.idRobot).then(Robot => {
+        if (Robot != null) {
+            // Update an existing Robot instance
+            Robot.update(req.body).then(Robot => {
+                res.status(200).send(JSON.stringify(Robot));
+            }).catch(err => {
+                res.status(500).send(JSON.stringify(err));
+            });
+        } else {
+            // Robot instance not found
+            res.status(404).send("Robot not found");
+        }
+    });
+});
+
 
 robotRouter.delete("/robot/:idRobot", function(req, res) {
     db.Robot.destroy({
